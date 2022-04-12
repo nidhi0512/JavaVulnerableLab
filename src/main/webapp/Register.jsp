@@ -48,4 +48,4 @@
 <tr><td><input type="submit" name="Register" value="Register"/></td></tr>
 </table>  
 </form>
-<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %>    
