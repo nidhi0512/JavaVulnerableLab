@@ -19,5 +19,7 @@
             <column name="about" length="16" not-null="true" />
         </property>       
  
+     
+     
     </class>
 </hibernate-mapping>
