@@ -22,3 +22,5 @@ resource "aws_security_group" "allow_AJP" {
     Name = "AJP configuration port"
   }
 }
+
+
