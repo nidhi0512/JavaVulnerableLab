@@ -1,5 +1,5 @@
 cxflow:
-  bug-tracker: JIRA
+  bug-tracker: GitHub
   filter-severity:
   - High
   filter-category:
@@ -29,6 +29,16 @@ checkmarx:
   preset: 
   - ASA Premium
   
+sca:
+      appUrl: https://sca.checkmarx.net
+      apiUrl: https://api-sca.checkmarx.net
+      accessControlUrl: https://platform.checkmarx.net
+      tenant: Plugins
+      username: hussains
+      password: Cx123456!
+      team: "/CxServer/NidhiJaiswal"
+      include-sources: true
+      enabled-zip-scan: true
   
 jira:
   url: https://bearj.atlassian.net
