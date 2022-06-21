@@ -25,7 +25,7 @@ checkmarx:
   scope: access_control_api sast_rest_api
   multi-tenant: true
   enabled-vulnerability-scanners: 
-  - sast
+  - sca
   preset: 
   - ASA Premium
   
