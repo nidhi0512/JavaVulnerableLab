@@ -39,8 +39,8 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@49d8269b14ca87910ba003d47a31fa0c7a11f2fe
       with:
-        project: SASTTEST
-        app: SASTTEST
+        project: SCATEST
+        app: SCATEST
         team: '/CxServer'
         preset: High
         break_build: false
@@ -49,7 +49,7 @@ jobs:
         checkmarx_username: admin@cx
         checkmarx_password: Cx123456!
         checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
-        scanners: sast
+        scanners: sca
         bug_tracker: Sarif
         sca_api_url: https://api-sca.checkmarx.net
         sca_app_url: https://sca.checkmarx.net
