@@ -39,17 +39,17 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@49d8269b14ca87910ba003d47a31fa0c7a11f2fe
       with:
-        project: SCATEST
-        app: SCATEST
+        project: TEST
+        app: TEST
         team: '/CxServer'
         preset: High
         break_build: false
         incremental: false
-        checkmarx_url: https://e981-2401-4900-3c74-e82-c8fd-9c4f-566b-98a1.ngrok.io      
+        checkmarx_url: https://167d-31-168-164-190.ngrok.io      
         checkmarx_username: admin@cx
-        checkmarx_password: Cx123456!
+        checkmarx_password: Cx12345678!
         checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
-        scanners: sca
+        scanners: sast
         bug_tracker: Sarif
         sca_api_url: https://api-sca.checkmarx.net
         sca_app_url: https://sca.checkmarx.net
@@ -66,7 +66,7 @@ jobs:
       #  jira_open_status: 'In Progress, In Review'
       #  jira_closed_status: 'Done'
         github_token: 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
-        params: --cx-flow.zip-exclude="\.git\/.*,\.github\/.*,apps\/tests\/.*,apps\/docs/.*,apps\/web\/.*" --logging.level.com.checkmarx.flow.custom=debug --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --severity=High, Medium, Low --repo-name=webGoat --cx-flow.bug-tracker-impl=Sarif
+        params: --cx-flow.zip-exclude="\.git\/.*,\.github\/.*,apps\/tests\/.*,apps\/docs/.*,apps\/web\/.*" --logging.level.com.checkmarx.flow.custom=debug --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --severity= Medium --repo-name=webGoat --cx-flow.bug-tracker-impl=Sarif
    #Upload the Report for CodeQL/Security Alerts
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
