@@ -9,12 +9,12 @@ name: CxFlow
 
 on:
   push:
-    branches: [ "main" , "master"]
+    branches: [ "main" ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
   schedule:
-    - cron: '18 17 * * 3'
+    - cron: '24 23 * * 4'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel - this job is specifically configured to use the Checkmarx CxFlow Action
 permissions:
@@ -39,35 +39,17 @@ jobs:
     - name: Checkmarx CxFlow Action
       uses: checkmarx-ts/checkmarx-cxflow-github-action@49d8269b14ca87910ba003d47a31fa0c7a11f2fe
       with:
-        project: TEST
-        app: TEST
-        team: '/CxServer'
-        preset: High
-        break_build: false
-        incremental: false
-        checkmarx_url: https://167d-31-168-164-190.ngrok.io      
+        project: sariftest1
+        team: /CxServer
+        checkmarx_url: https://3a37-31-168-164-190.ngrok.io 
         checkmarx_username: admin@cx
         checkmarx_password: Cx12345678!
         checkmarx_client_secret: 014DF517-39D1-4453-B7B3-9930C563627C
-        scanners: sast
+        break_build: false
         bug_tracker: Sarif
-        sca_api_url: https://api-sca.checkmarx.net
-        sca_app_url: https://sca.checkmarx.net
-        sca_access_control_url: https://platform.checkmarx.net
-        sca_tenant: Plugins
-        sca_username: hussains
-        sca_password: Cx123456!
-      #  jira_url: https://nidhikjaiswal.atlassian.net/
-      #  jira_username: jaiswal.nidhi0512@gmail.com
-      #  jira_token: HDgIS6SlvoQSmABX70UQ4C3D
-      #  jira_issue_type: 'Bug'
-      #  jira_open_transition: 'In Progress'
-      #  jira_close_transition: 'Done'
-      #  jira_open_status: 'In Progress, In Review'
-      #  jira_closed_status: 'Done'
-        github_token: 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
-        params: --cx-flow.zip-exclude="\.git\/.*,\.github\/.*,apps\/tests\/.*,apps\/docs/.*,apps\/web\/.*" --logging.level.com.checkmarx.flow.custom=debug --logging.level.com.checkmarx.flow.service=debug --logging.level.com.checkmarx.flow.utils=debug --logging.level.com.checkmarx.sdk.service=debug --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --repo-name=webGoat --cx-flow.bug-tracker-impl=Sarif
-   #Upload the Report for CodeQL/Security Alerts
+        scanners: sast
+        params: --namespace=${{ github.repository_owner }} --repo-name=${{ github.event.repository.name }} --branch=${{ github.ref }} --cx-flow.filter-severity --cx-flow.filter-category --checkmarx.disable-clubbing=true --repo-url=${{ github.event.repository.url }}
+    # Upload the Report for CodeQL/Security Alerts
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v2
       with:
