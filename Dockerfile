@@ -13,3 +13,5 @@ RUN chown $USER:$USER $WORKDIR
 COPY --chown=node . $WORKDIR
 
 EXPOSE 22
+
+
