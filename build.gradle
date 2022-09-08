@@ -415,6 +415,3 @@ task getVersion {
         println "${version}"
     }
 }
-
-
-
