@@ -26,7 +26,6 @@ public class DBConnect {
         properties.load(new FileInputStream(path));
         String dbuser=properties.getProperty("dbuser");
          String dbpass = properties.getProperty("dbpass");
-        dbpass = decryptPassword(dbpass); 
        String dbfullurl = properties.getProperty("dburl")+properties.getProperty("dbname");
        String jdbcdriver = properties.getProperty("jdbcdriver");
             Connection con=null;
