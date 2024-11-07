@@ -8,26 +8,26 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
 steps:
-- task: NidhiJaiswal.cxsast.cx-scan-task.Application security testing@2024
-  displayName: 'Application security testing'
+- task: Application security testing@2024
   inputs:
-    projectName: ADORegTesting
-    CheckmarxService: kishorsast
-    preset: All
-    customPreset: Test
-    engineConfigId: 1
-    fullTeamName: CxServer
-    fullScansScheduled: false
-    projectcustomfields: 'custom1:test'
-    customfields: 'test:test123'
-    denyProject: true
+    enableProxy: false
+    enableSastScan: true
+    enableSastBranching: false
+    preset: 'Android'
+    customPreset: 'Test'
+    engineConfigId: '2'
+    fullTeamName: 'CxServer'
+    incScan: false
+    scanTimeout: '10'
+    waitingTimeBeforeRetryScan: '10'
+    customfields: 'test:test'
     generatePDFReport: true
     enableDependencyScan: true
-    dependencyServerURL: SCAServer
-    scaTeam: CxServer
-
+    dependencyServerURL: 'SCAServer'
+    scaTeam: 'CxServer'
+    projectName: 'ADORegTest'
+    CheckmarxService: 'kishorsast'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
