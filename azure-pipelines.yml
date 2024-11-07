@@ -10,75 +10,23 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: Checkmarx-Prerelease.cxsast.cx-scan-task.Application security testing@2022
+- task: NidhiJaiswal.cxsast.cx-scan-task.Application security testing@2024
   displayName: 'Application security testing'
   inputs:
-    projectName: 'ProjectName'
-    syncMode: true
-    enableProxy: false
-    enableSastScan: true
-    CheckmarxService: 9.4SAST
-    sastProxyUrl: ''
-    preset: Android
-    customPreset: 'All'
-    engineConfigId: 
-    fullTeamName: /CxServer
-    sastCaChainFilePath: ''
-    overrideProjectSettings: false
-    incScan: true
-    fullScansScheduled: true
-    fullScanCycle: 5
-    forceScan: false
-    folderExclusion: 'cvs, .svn, .hg , .git, .bzr, bin , obj,  backup, .idea, node_modules'
-    fileExtension: 'cvs, .svn, .hg , .git, .bzr, bin , obj,  backup, .idea, node_modules'
-    manifestPattern: **/folder1/**, !**test.yaml
-    fingerprintPattern: **/folder1/**, !**test.yaml
-    projectCustomTags: ‘ENV: DEV', ‘Team: ’
-    scanCustomTags: ‘ENV: DEV', ‘Team: ’
-    scaScanTimeout:
-    scanTimeout: 5
-    projectcustomfields: ''
-    customfields: ''
-    denyProject: false
-    comment: 'Sample YAML File'
-    postScanAction: 
+    projectName: ADORegTesting
+    CheckmarxService: kishorsast
+    preset: All
+    customPreset: Test
+    engineConfigId: 1
+    fullTeamName: CxServer
+    fullScansScheduled: false
+    projectcustomfields: 'custom1:test'
+    customfields: 'test:test123'
+    denyProject: true
     generatePDFReport: true
-    vulnerabilityThreshold: true
-    failBuildForNewVulnerabilitiesEnabled: true
-    failBuildForNewVulnerabilitiesSeverity: MEDIUM
-    high: 10
-    medium: 10
-    low: 10
-    enablePolicyViolations: false
-    avoidDuplicateScans: false
     enableDependencyScan: true
-    dependencyServerURL: 'SCA'
-    scaProxyUrl: ''
-    dependencyFileExtension: ''
-    dependencyFolderExclusion: ''
-    scaTeam: /CxServer
-    scaCaChainFilePath: c://Users
-    scaConfigFilePaths: ''
-    scaEnvVariables: ''
-    isEnableScaResolver: true
-    scaResolverAddParameters: ''
-    includeSource: true
-    scaExploitablePath: true
-    pathToScaResolver: ‘’
-    CheckmarxServiceForSca: 9.4SAST
-    scaProjectFullPath: c://Users
-    scaProjectId: 1
-    scaEnablePolicyViolations: true
-    scaVulnerabilityThreshold: true
-    scaHigh: 10
-    scaMedium: 10
-    scaLow: 10
-    enableSastBranching :true
-    masterBranchProjectName : ''
-    waitingTimeBeforeRetryScan :30
-    critical: 10
-    waitingTimeBeforeRetrySCAScan:30
-    scaCritical: 10
+    dependencyServerURL: SCAServer
+    scaTeam: CxServer
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
