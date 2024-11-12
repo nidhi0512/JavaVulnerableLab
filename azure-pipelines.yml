@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: ADOAGENT
 steps:
 - task: NidhiJaiswal.cxsast.cx-scan-task.Application security testing@2024
   displayName: 'Application security testing'
