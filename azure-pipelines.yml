@@ -9,25 +9,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 steps:
-- task: Application security testing@2024
+- task: NidhiJaiswal.cxsast.cx-scan-task.Application security testing@2024
+  displayName: 'Application security testing'
   inputs:
-    enableProxy: false
-    enableSastScan: true
-    enableSastBranching: false
-    preset: 'Android'
-    customPreset: 'Test'
-    engineConfigId: '2'
-    fullTeamName: 'CxServer'
-    incScan: false
-    scanTimeout: '10'
-    waitingTimeBeforeRetryScan: '10'
-    customfields: 'test:test'
-    generatePDFReport: true
+    projectName: AdoRegressionTesting
+    enableSastScan: false
     enableDependencyScan: true
-    dependencyServerURL: 'SCAServer'
-    scaTeam: 'CxServer'
-    projectName: 'ADORegTest'
-    CheckmarxService: 'kishorsast'
+    dependencyServerURL: SCAServer
+    scaTeam: CxServer
+    isEnableScaResolver: true
+    scaResolverAddParameters: '-s D:\CxProjects\ADO\VSTS-Plugin -n AdoRegressionTesting -r D:\ScaResolver\SCAResult\test.json --cxuser RahulPidde --cxpassword $(password) --cxserver https://cxprivatecloud.checkmarx.net --cxprojectname AdoRegressionTesting --sast-result-path D:\ScaResolver\SASTResult\ab.json'
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
